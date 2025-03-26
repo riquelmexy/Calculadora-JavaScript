@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caluladora!!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   <div>
+    <div class="tabuadaa"><h2>Tabuada</h2></div>
+    <input type="number" id="numTabuada" placeholder="Digite um número">
+    <button onclick="gerarTabuada()">Gerar Tabuada</button>
+    <p id="resultadoTabuada"></p>
+
+   <div class="divtriangulo"> <h2>Cálculo de Formas</h2></div>
+    <label>Base/Lado 1:</label> <input type="number" id="base">
+    <label>Altura/Lado 2:</label> <input type="number" id="altura">
+    <button onclick="calcularFormas()">Calcular</button>
+    <p id="resultadoFormas"></p>
+
+    <div class="dividade"><h2>Verificar Maioridade</h2></div>
+    <input type="number" id="idade" placeholder="Digite sua idade">
+    <button onclick="verificarIdade()">Verificar</button>
+    <p id="resultadoIdade"></p>
+
+    <div class="divcomparacao"><h2>Comparação de Números</h2></div>
+    <input type="number" id="num1" placeholder="Número 1">
+    <input type="number" id="num2" placeholder="Número 2">
+    <button onclick="compararNumeros()">Comparar</button>
+    <p id="resultadoComparacao"></p>
+</div>
+    <script>
+        function gerarTabuada() {
+            let num = document.getElementById("numTabuada").value;
+            let resultado = "";
+            for (let i = 1; i <= 10; i++) {
+                resultado += `${num} x ${i} = ${num * i} <br>`;
+            }
+            document.getElementById("resultadoTabuada").innerHTML = resultado;
+        }
+
+        function calcularFormas() {
+            let base = parseFloat(document.getElementById("base").value);
+            let altura = parseFloat(document.getElementById("altura").value);
+            let areaRetangulo = base * altura;
+            let areaQuadrado = base * base;
+            let areaTriangulo = (base * altura) / 2;
+            document.getElementById("resultadoFormas").innerHTML = 
+                `Área do Retângulo: ${areaRetangulo} <br>
+                 Área do Quadrado: ${areaQuadrado} <br>
+                 Área do Triângulo: ${areaTriangulo}`;
+        }
+
+        function verificarIdade() {
+            let idade = document.getElementById("idade").value;
+            let mensagem = idade >= 18 ? "Você é maior de idade." : "Você é menor de idade.";
+            document.getElementById("resultadoIdade").innerText = mensagem;
+        }
+
+        function compararNumeros() {
+            let num1 = parseFloat(document.getElementById("num1").value);
+            let num2 = parseFloat(document.getElementById("num2").value);
+            let resultado = num1 > num2 ? `Maior número: ${num1}` : num1 < num2 ? `Maior número: ${num2}` : "Os números são iguais.";
+            document.getElementById("resultadoComparacao").innerText = resultado;
+        }
+    </script>
+</body>
+</html>
